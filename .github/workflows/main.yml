@@ -36,5 +36,8 @@ jobs:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASS }}
 
-      - name: Rodar testes dentro do Container
-        run: docker run vitorbernardo2/site-pudim:v1 echo "Container testado e executado com sucesso!"
+      - name: Subir container e testar resposta HTTP
+        run: |
+          docker run -d -p 8080:80 --name teste-pudim vitorbernardo2/site-pudim:v1
+          sleep 3
+          curl --fail http://localhost:8080
