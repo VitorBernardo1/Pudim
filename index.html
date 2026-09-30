@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Pudim Perfeito | A Sobremesa Clássica do Brasil</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        caramel: {
+                            100: '#FCEBCA',
+                            300: '#F5BE6B',
+                            500: '#E08E20',
+                            700: '#A35C10',
+                            900: '#663406',
+                        },
+                        cream: '#FFF9F0',
+                        vanilla: '#FDF5E6',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar for a polished look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFF9F0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E08E20;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #A35C10;
+        }
+        
+        .caramel-gradient-text {
+            background: linear-gradient(to right, #A35C10, #E08E20);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .caramel-drip {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 15px;
+            background: #A35C10;
+            border-bottom-left-radius: 50% 100%;
+            border-bottom-right-radius: 50% 100%;
+        }
+    </style>
+</head>
+<body class="bg-cream text-caramel-900 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-cream/90 backdrop-blur-md shadow-sm border-b border-caramel-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-serif text-2xl font-bold text-caramel-700 flex items-center gap-2">
+                        <svg class="w-8 h-8 text-caramel-500" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z" opacity="0.3"/>
+                            <path d="M16 11H8C7.45 11 7 11.45 7 12C7 12.55 7.45 13 8 13H16C16.55 13 17 12.55 17 12C17 11.45 16.55 11 16 11ZM12 6C10.9 6 10 6.9 10 8V9H14V8C14 6.9 13.1 6 12 6ZM12 15C10.9 15 10 15.9 10 17H14C14 15.9 13.1 15 12 15Z"/>
+                        </svg>
+                        Pudim Perfeito
+                    </a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#historia" class="text-caramel-700 hover:text-caramel-500 font-medium transition-colors">A História</a>
+                    <a href="#receita" class="text-caramel-700 hover:text-caramel-500 font-medium transition-colors">A Receita</a>
+                    <a href="#dicas" class="text-caramel-700 hover:text-caramel-500 font-medium transition-colors">Dicas de Ouro</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-caramel-700 hover:text-caramel-500 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-cream border-t border-caramel-100">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#historia" class="block px-3 py-2 rounded-md text-base font-medium text-caramel-700 hover:bg-caramel-100 hover:text-caramel-900">A História</a>
+                <a href="#receita" class="block px-3 py-2 rounded-md text-base font-medium text-caramel-700 hover:bg-caramel-100 hover:text-caramel-900">A Receita</a>
+                <a href="#dicas" class="block px-3 py-2 rounded-md text-base font-medium text-caramel-700 hover:bg-caramel-100 hover:text-caramel-900">Dicas de Ouro</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-vanilla via-cream to-caramel-100 opacity-50 -z-10"></div>
+        
+        <!-- Decorative blob -->
+        <div class="absolute top-20 -right-20 w-96 h-96 bg-caramel-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div class="absolute -bottom-20 -left-20 w-96 h-96 bg-caramel-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="w-full lg:w-1/2 text-center lg:text-left">
+                    <span class="inline-block py-1 px-3 rounded-full bg-caramel-100 text-caramel-700 text-sm font-semibold tracking-wider uppercase mb-4 shadow-sm border border-caramel-300/30">O Clássico Brasileiro</span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-caramel-900 leading-tight mb-6">
+                        A Arte do <br class="hidden lg:block" />
+                        <span class="caramel-gradient-text">Pudim Perfeito</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-caramel-700 mb-8 max-w-2xl mx-auto lg:mx-0 font-light">
+                        Cremoso, com aquela calda de caramelo brilhante e o sabor inconfundível que abraça a alma. Aprenda os segredos da sobremesa que une o Brasil.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#receita" class="bg-caramel-500 hover:bg-caramel-700 text-white font-medium py-3 px-8 rounded-full transition-all duration-300 shadow-lg shadow-caramel-500/30 flex items-center justify-center gap-2">
+                            Ver Receita
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                        </a>
+                        <a href="#dicas" class="bg-white text-caramel-700 border border-caramel-300 hover:bg-caramel-50 font-medium py-3 px-8 rounded-full transition-all duration-300 flex items-center justify-center">
+                            Segredos da Textura
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="w-full lg:w-1/2">
+                    <div class="relative">
+                        <!-- Decorative background for image -->
+                        <div class="absolute inset-0 bg-caramel-300 rounded-3xl transform rotate-3 scale-105 opacity-20"></div>
+                        <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&q=80&w=800" 
+                             alt="Pudim de Leite Condensado com calda de caramelo" 
+                             class="relative rounded-3xl shadow-2xl object-cover h-[400px] w-full"
+                             onerror="this.src='https://placehold.co/800x400/E08E20/FFFFFF?text=Pudim+Delicioso'">
+                        
+                        <!-- Floating badge -->
+                        <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-caramel-100">
+                            <div class="bg-caramel-100 p-2 rounded-full">
+                                <svg class="w-6 h-6 text-caramel-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-caramel-500 font-bold uppercase">Tempo de Preparo</p>
+                                <p class="text-sm font-medium text-caramel-900">15 min + Forno</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- History Section -->
+    <section id="historia" class="py-20 bg-white relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-caramel-900 mb-4">De Portugal para as Mesas do Brasil</h2>
+                <div class="h-1 w-24 bg-caramel-500 mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <p class="text-lg text-caramel-700 leading-relaxed">
+                        A história do pudim remonta a Portugal. Originalmente chamado de "Pudim de Priscos", a receita baseava-se em muitos ovos, banha de porco e calda de açúcar, uma herança da rica tradição de doces conventuais portugueses.
+                    </p>
+                    <p class="text-lg text-caramel-700 leading-relaxed">
+                        Quando a receita cruzou o oceano até o Brasil, sofreu uma adaptação genial. Com a chegada e popularização do <strong class="text-caramel-900">leite condensado</strong> no século XX, o ingrediente substituiu a complexa calda de açúcar original.
+                    </p>
+                    <p class="text-lg text-caramel-700 leading-relaxed">
+                        O resultado? Uma sobremesa muito mais prática, acessível, com textura aveludada e um sabor que se tornou a verdadeira definição de "conforto" para os brasileiros. Hoje, não há almoço de domingo completo sem ele.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-4">
+                        <img src="https://images.unsplash.com/photo-1596647963456-eb4dfa73fa13?auto=format&fit=crop&q=80&w=400" alt="Ingredientes doces" class="rounded-2xl shadow-md h-48 w-full object-cover">
+                        <div class="bg-vanilla p-6 rounded-2xl shadow-sm border border-caramel-100">
+                            <h3 class="font-serif font-bold text-caramel-900 text-xl mb-2">Curiosidade</h3>
+                            <p class="text-sm text-caramel-700">O pudim é tão famoso no Brasil que existe até o "Dia do Pudim", celebrado informalmente por amantes da sobremesa em 22 de maio!</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 pt-8">
+                        <div class="bg-caramel-100 p-6 rounded-2xl shadow-sm">
+                            <svg class="w-8 h-8 text-caramel-500 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                            <h3 class="font-serif font-bold text-caramel-900 text-xl mb-2">Tradição</h3>
+                            <p class="text-sm text-caramel-700">A forma com furo no meio não é só estética! Ela garante que o calor circule uniformemente, assando o pudim por igual no banho-maria.</p>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?auto=format&fit=crop&q=80&w=400" alt="Leite condensado caindo" class="rounded-2xl shadow-md h-48 w-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recipe Section -->
+    <section id="receita" class="py-20 bg-vanilla relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-caramel-900 mb-4">A Receita Clássica</h2>
+                <p class="text-caramel-700 max-w-2xl mx-auto text-lg">Simples, com poucos ingredientes, mas que exige carinho no preparo.</p>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-caramel-100">
+                <div class="grid md:grid-cols-3">
+                    
+                    <!-- Ingredients Sidebar -->
+                    <div class="bg-caramel-50 md:col-span-1 p-8 border-b md:border-b-0 md:border-r border-caramel-100">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="bg-caramel-500 p-2 rounded-lg">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold text-caramel-900">Ingredientes</h3>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-sm font-bold text-caramel-500 uppercase tracking-wider mb-3">Para o Pudim</h4>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start gap-2">
+                                        <svg class="w-5 h-5 text-caramel-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                        <span class="text-caramel-800">1 lata de leite condensado (395g)</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <svg class="w-5 h-5 text-caramel-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                        <span class="text-caramel-800">1 lata de leite (mesma medida da lata)</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <svg class="w-5 h-5 text-caramel-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                        <span class="text-caramel-800">3 ovos inteiros médios</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <hr class="border-caramel-200">
+                            
+                            <div>
+                                <h4 class="text-sm font-bold text-caramel-500 uppercase tracking-wider mb-3">Para a Calda</h4>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start gap-2">
+                                        <svg class="w-5 h-5 text-caramel-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                        <span class="text-caramel-800">1 xícara (chá) de açúcar</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <svg class="w-5 h-5 text-caramel-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                        <span class="text-caramel-800">1/2 xícara (chá) de água quente</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Preparation Steps -->
+                    <div class="md:col-span-2 p-8 lg:p-10">
+                        <div class="flex items-center gap-3 mb-8">
+                            <div class="bg-caramel-500 p-2 rounded-lg">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold text-caramel-900">Modo de Preparo</h3>
+                        </div>
+
+                        <div class="space-y-8 relative before:absolute before:inset-0 before:ml-4 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-caramel-300 before:to-transparent">
+                            
+                            <!-- Step 1 -->
+                            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                                <div class="flex items-center justify-center w-8 h-8 rounded-full bg-caramel-500 text-white font-bold shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-md z-10">1</div>
+                                <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2rem)] bg-white p-5 rounded-2xl shadow-sm border border-caramel-100 ml-4 md:ml-0 md:group-even:mr-8 md:group-odd:ml-8 hover:shadow-md transition-shadow">
+                                    <h4 class="font-bold text-caramel-900 mb-1 text-lg">A Calda Perfeita</h4>
+                                    <p class="text-caramel-700 text-sm">Em uma panela (ou na própria forma), derreta o açúcar em fogo baixo até ficar dourado. Adicione a água quente com cuidado (vai espirrar) e mexa até dissolver os torrões e formar uma calda lisa. Espalhe pelo fundo e laterais da forma.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                                <div class="flex items-center justify-center w-8 h-8 rounded-full bg-caramel-500 text-white font-bold shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-md z-10">2</div>
+                                <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2rem)] bg-white p-5 rounded-2xl shadow-sm border border-caramel-100 ml-4 md:ml-0 md:group-even:mr-8 md:group-odd:ml-8 hover:shadow-md transition-shadow">
+                                    <h4 class="font-bold text-caramel-900 mb-1 text-lg">O Creme</h4>
+                                    <p class="text-caramel-700 text-sm">No liquidificador, coloque os ovos, o leite condensado e o leite. Bata por cerca de 3 minutos até ficar bem homogêneo. (Dica: veja a seção abaixo se quiser com ou sem furinhos!). Despeje na forma caramelizada.</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 3 -->
+                            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                                <div class="flex items-center justify-center w-8 h-8 rounded-full bg-caramel-500 text-white font-bold shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-md z-10">3</div>
+                                <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2rem)] bg-white p-5 rounded-2xl shadow-sm border border-caramel-100 ml-4 md:ml-0 md:group-even:mr-8 md:group-odd:ml-8 hover:shadow-md transition-shadow">
+                                    <h4 class="font-bold text-caramel-900 mb-1 text-lg">Banho-maria e Forno</h4>
+                                    <p class="text-caramel-700 text-sm">Cubra a forma do pudim com papel alumínio (lado brilhante para baixo). Coloque-a dentro de uma assadeira maior com água quente (banho-maria). Asse em forno preaquecido a 180°C por cerca de 1 hora e 30 minutos.</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 4 -->
+                            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                                <div class="flex items-center justify-center w-8 h-8 rounded-full bg-caramel-500 text-white font-bold shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-md z-10">4</div>
+                                <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2rem)] bg-white p-5 rounded-2xl shadow-sm border border-caramel-100 ml-4 md:ml-0 md:group-even:mr-8 md:group-odd:ml-8 hover:shadow-md transition-shadow">
+                                    <h4 class="font-bold text-caramel-900 mb-1 text-lg">O Grande Momento</h4>
+                                    <p class="text-caramel-700 text-sm">Espere esfriar completamente e leve à geladeira por, no mínimo, 4 horas (ideal de um dia para o outro). Para desenformar, passe uma faca sem ponta nas laterais e aqueça rapidamente o fundo da forma na boca do fogão para a calda soltar. Vire no prato e sirva!</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section id="dicas" class="py-20 bg-white relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-caramel-900 mb-4">A Grande Questão</h2>
+                <p class="text-caramel-700 text-lg max-w-2xl mx-auto">Com ou sem furinhos? O melhor pudim é aquele que você mais gosta. Veja como atingir a textura da sua preferência.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+                
+                <!-- Sem Furinhos (Liso) -->
+                <div class="group h-full">
+                    <div class="bg-vanilla h-full rounded-3xl p-8 lg:p-10 border-2 border-transparent hover:border-caramel-300 transition-all duration-300 shadow-lg relative overflow-hidden flex flex-col">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-white rounded-bl-full opacity-50 -mr-10 -mt-10 transition-transform group-hover:scale-110"></div>
+                        
+                        <div class="relative z-10 flex-grow">
+                            <div class="inline-block px-4 py-1 rounded-full bg-caramel-100 text-caramel-800 font-semibold text-sm mb-6 border border-caramel-200">Textura Aveludada</div>
+                            <h3 class="text-3xl font-serif font-bold text-caramel-900 mb-4">Pudim Lisinho<br><span class="text-xl text-caramel-600">(Sem Furinhos)</span></h3>
+                            
+                            <p class="text-caramel-800 mb-6 font-light">Para quem prefere uma textura de creme, densa, que derrete na boca feito seda.</p>
+                            
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3">
+                                    <div class="bg-white p-1 rounded-full shadow-sm mt-1">
+                                        <svg class="w-4 h-4 text-caramel-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <p class="text-caramel-900"><strong class="block">Misture delicadamente:</strong> Não bata no liquidificador, ou bata em velocidade bem baixa apenas para misturar. O objetivo é <span class="underline decoration-caramel-300">não agregar ar</span> à massa.</p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="bg-white p-1 rounded-full shadow-sm mt-1">
+                                        <svg class="w-4 h-4 text-caramel-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <p class="text-caramel-900"><strong class="block">Use uma peneira:</strong> Passe o líquido por uma peneira fina antes de despejar na forma para retirar pequenas bolhas ou películas do ovo.</p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="bg-white p-1 rounded-full shadow-sm mt-1">
+                                        <svg class="w-4 h-4 text-caramel-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <p class="text-caramel-900"><strong class="block">Fogo baixo e paciência:</strong> Asse em temperatura baixa (150°C a 160°C) para que o ovo coagule lentamente, sem ferver a água do banho-maria.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Com Furinhos -->
+                <div class="group h-full">
+                    <div class="bg-white h-full rounded-3xl p-8 lg:p-10 border-2 border-caramel-100 hover:border-caramel-500 transition-all duration-300 shadow-lg relative overflow-hidden flex flex-col">
+                        <!-- Polka dot pattern for "furinhos" effect -->
+                        <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#663406 2px, transparent 2px); background-size: 20px 20px;"></div>
+                        
+                        <div class="relative z-10 flex-grow">
+                            <div class="inline-block px-4 py-1 rounded-full bg-caramel-500 text-white font-semibold text-sm mb-6 shadow-sm">Textura Esponjosa</div>
+                            <h3 class="text-3xl font-serif font-bold text-caramel-900 mb-4">Pudim Tradicional<br><span class="text-xl text-caramel-600">(Com Furinhos)</span></h3>
+                            
+                            <p class="text-caramel-800 mb-6 font-light">Para quem ama quando a calda de caramelo entra nos furinhos, deixando cada mordida mais suculenta.</p>
+                            
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3">
+                                    <div class="bg-caramel-100 p-1 rounded-full shadow-sm mt-1">
+                                        <svg class="w-4 h-4 text-caramel-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <p class="text-caramel-900"><strong class="block">Bata bastante:</strong> Deixe bater no liquidificador em velocidade alta por 3 a 5 minutos. Isso <span class="underline decoration-caramel-500">incorpora bastante ar</span> à massa, criando a espuma que forma os furos.</p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="bg-caramel-100 p-1 rounded-full shadow-sm mt-1">
+                                        <svg class="w-4 h-4 text-caramel-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <p class="text-caramel-900"><strong class="block">Direto pra forma:</strong> Não peneire e não deixe a massa descansar. Despeje imediatamente na forma caramelizada com toda a espuma formada.</p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="bg-caramel-100 p-1 rounded-full shadow-sm mt-1">
+                                        <svg class="w-4 h-4 text-caramel-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <p class="text-caramel-900"><strong class="block">Fogo mais alto:</strong> Asse em forno a 200°C. O calor maior faz a água do pudim tentar ferver antes de o ovo coagular totalmente, expandindo as bolhas de ar.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-caramel-700 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, #000 0, #000 2px, transparent 2px, transparent 10px);"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <h2 class="text-3xl font-serif text-white font-bold mb-6">Pronto para adoçar o seu dia?</h2>
+            <p class="text-caramel-100 mb-8 text-lg">Separe os 3 ingredientes e prepare hoje mesmo o melhor pudim da sua vida. Compartilhe com quem você ama!</p>
+            <button onclick="window.scrollTo(0,0)" class="bg-white text-caramel-700 hover:bg-vanilla font-bold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:-translate-y-1">
+                Voltar ao Topo
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-caramel-900 text-caramel-100 py-12 border-t-4 border-caramel-500">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <svg class="w-6 h-6 text-caramel-300" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z" opacity="0.5"/>
+                    <path d="M16 11H8C7.45 11 7 11.45 7 12C7 12.55 7.45 13 8 13H16C16.55 13 17 12.55 17 12C17 11.45 16.55 11 16 11ZM12 6C10.9 6 10 6.9 10 8V9H14V8C14 6.9 13.1 6 12 6ZM12 15C10.9 15 10 15.9 10 17H14C14 15.9 13.1 15 12 15Z"/>
+                </svg>
+                <span class="font-serif text-xl font-bold text-white">Pudim Perfeito</span>
+            </div>
+            
+            <p class="text-sm text-caramel-300/80 text-center md:text-left">
+                &copy; Feito com muito carinho e caramelo. <br class="md:hidden">A sobremesa nacional do Brasil.
+            </p>
+            
+            <div class="flex space-x-4">
+                <a href="#" class="text-caramel-300 hover:text-white transition-colors">
+                    <span class="sr-only">Instagram</span>
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" /></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const menuLinks = menu.querySelectorAll('a');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Change Nav background on scroll for better readability
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-md');
+                nav.classList.remove('shadow-sm', 'bg-cream/90');
+                nav.classList.add('bg-cream/95');
+            } else {
+                nav.classList.remove('shadow-md', 'bg-cream/95');
+                nav.classList.add('shadow-sm', 'bg-cream/90');
+            }
+        });
+    </script>
+</body>
+</html>
