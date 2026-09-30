@@ -1,0 +1,8 @@
+services:
+  calculadora-app:
+    build: .
+    image: vitorbernardo2/site-pudim:v1
+
+  servico-vizinho:
+    image: alpine
+    command: sleep infinity
